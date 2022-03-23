@@ -17,48 +17,25 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class HeatCapacity : ScalarUnit {
+[GenerateUnitValue]
+public sealed partial class Force {
     /// <summary>
     ///
     /// </summary>
-    public static readonly HeatCapacity KjKgK = new("kJ/kg K", 1);
-
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly HeatCapacity CalGK = new("cal/g K", 238.846e-3);
+    public static readonly ForceUnit N = new("N", 1);
 
     /// <summary>
     ///
     /// </summary>
-    public static readonly HeatCapacity BtuLbF = new("Btu/lb F", 238.846e-3);
-
-    private HeatCapacity(string name, double factor) : base(name, factor) {
-    }
-
-    /// <summary>
-    /// Creates a heat capacity value with the specified value and this unit
-    /// </summary>
-    public HeatCapacityValue Value(double value) {
-        return new HeatCapacityValue(value, this);
-    }
-}
-
-/// <summary>
-///
-/// </summary>
-public class HeatCapacityValue : UnitValue<HeatCapacity> {
-    /// <summary>
-    /// Initialises a new instance of an <see ref="HeatCapacityValue"/>
-    /// </summary>
-    public HeatCapacityValue(double value, HeatCapacity unit) : base(value, unit)
-    {
-    }
+    public static readonly ForceUnit Newton = new("N", 1);
 
     /// <summary>
     ///
     /// </summary>
-    public static implicit operator HeatCapacityValue(double value) {
-        return HeatCapacity.KjKgK.Value(value);
-    }
+    public static readonly ForceUnit Lbf = new("lbf", 4.4482216);
+    
+    /// <summary>
+    ///
+    /// </summary>
+    public static readonly ForceUnit Lb = new("lb", 4.4482216);
 }

@@ -17,58 +17,30 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class Volume : ScalarUnit {
+[GenerateUnitValue]
+public sealed partial class Energy {
     /// <summary>
     ///
     /// </summary>
-    public static readonly Volume MSec = new("m3", 1);
+     public static readonly EnergyUnit Joule = new("joule", 1);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Volume Kps = new("cc", 0.000001);
+    public static readonly EnergyUnit J = new("j", 1);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Volume Mph = new("in3", 1.6387064e-05);
+    public static readonly EnergyUnit Erg = new("erg", 1e-07);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Volume Fps = new("liter", 0.001);
+    public static readonly EnergyUnit Ftlb = new("ftlb", 1.3558179);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Volume NSec = new("cup", 0.000236588);
-
-    private Volume(string name, double factor) : base (name, factor) {
-    }  
-
-    /// <summary>
-    /// Creates a volume value with the specified value and this unit
-    /// </summary>
-    public VolumeValue Value(double value) {
-        return new VolumeValue(value, this);
-    }
-}
-
-/// <summary>
-///
-/// </summary>
-public class VolumeValue : UnitValue<Volume> {
-    /// <summary>
-    /// Initialises a new instance of an <see ref="VolumeValue"/>
-    /// </summary>
-    public VolumeValue(double value, Volume unit) : base(value, unit)
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    public static implicit operator VolumeValue(double value) {
-        return Volume.MSec.Value(value);
-    }
+    public static readonly EnergyUnit Cal = new("cal", 4.1868);
 }

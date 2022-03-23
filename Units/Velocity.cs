@@ -17,63 +17,30 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class SurfaceTension : ScalarUnit {
+[GenerateUnitValue]
+public sealed partial class Velocity {
     /// <summary>
     ///
     /// </summary>
-    public static readonly SurfaceTension MNM = new("mN/m", 1);
+    public static readonly VelocityUnit MSec = new("m/sec", 1);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly SurfaceTension NM = new("N/m", 10e-3);
+    public static readonly VelocityUnit Kps = new("kps", 1000);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly SurfaceTension JM2 = new("J/m2", 10e-3);
+    public static readonly VelocityUnit Mph = new("mph", 0.44704);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly SurfaceTension DynCm = new("dyn/cm", 1);
+    public static readonly VelocityUnit Fps = new("fps", 0.3048);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly SurfaceTension ErgCm2 = new("erg/cm2", 1);
-    
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly SurfaceTension LbfFt = new("lbf/ft", 68.52e-6);
-
-    private SurfaceTension(string name, double factor) : base (name, factor) {
-    }
-    
-    /// <summary>
-    /// Creates a surface tension value with the specified value and this unit
-    /// </summary>
-    public SurfaceTensionValue Value(double value) {
-        return new SurfaceTensionValue(value, this);
-    }
-}
-
-/// <summary>
-///
-/// </summary>
-public class SurfaceTensionValue : UnitValue<SurfaceTension> {
-    /// <summary>
-    /// Initialises a new instance of an <see ref="SurfaceTensionValue"/>
-    /// </summary>
-    public SurfaceTensionValue(double value, SurfaceTension unit) : base(value, unit)
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    public static implicit operator SurfaceTensionValue(double value) {
-        return SurfaceTension.MNM.Value(value);
-    }
+    public static readonly VelocityUnit NSec = new("n/sec", 0.0254);
 }

@@ -17,48 +17,82 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class Acceleration : ScalarUnit {
+public abstract class UnitValue<TUnit> where TUnit : Unit {
     /// <summary>
     ///
     /// </summary>
-    public static readonly Acceleration MSec2 = new("m/sec2", 1);
+    public double Value { get; }
 
     /// <summary>
     ///
     /// </summary>
-    public static readonly Acceleration FtSec2 = new("ft/sec2", .3048);
+    public TUnit Unit { get; }
 
     /// <summary>
-    ///
+    /// Initialises a new instance of the UnitValue.
     /// </summary>
-    public static readonly Acceleration G = new("g", 9.80665);
-   
-    private Acceleration(string name, double factor) : base(name, factor) {
+    public UnitValue(double value, TUnit unit) {
+        Value = value;
+        Unit = unit;
     }
 
     /// <summary>
-    /// Creates an acceleration value with the specified value and this unit.
+    ///
     /// </summary>
-    public AccelerationValue Value(double value) {
-        return new AccelerationValue(value, this);
+    public static implicit operator double(UnitValue<TUnit>? value) {
+        if (value is null) {
+            throw new ApplicationException("Cannot convert from a null unit value.");
+        }
+
+        return value.ConvertFrom();
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    protected double ConvertFrom() {      
+        return Unit.ConvertFrom(Value);
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    public abstract Conversion<TUnit> In {
+        get;
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    public abstract class Conversion<T> where T : TUnit {
+        private readonly UnitValue<T> _value;
+
+        /// <summary>
+        ///
+        /// </summary>
+        protected Conversion(UnitValue<T> value) {
+            _value = value;
+        }
+
+        /// <summary>
+        ///
+        /// </summary>
+        public double this[T unit] { 
+            get {
+                return unit.ConvertTo(_value.Unit.ConvertFrom(_value.Value));
+            }
+        }
     }
 }
 
 /// <summary>
 ///
 /// </summary>
-public class AccelerationValue : UnitValue<Acceleration> {
+public static class UnitValueExtensions {
     /// <summary>
-    /// Initialises a new instance of an <see ref="AccelerationValue"/>
+    ///
     /// </summary>
-    public AccelerationValue(double value, Acceleration unit) : base(value, unit)
-    {
-    }
-
-    /// <summary>
-    /// Implicitly converts a double to an acceleration value represented in m/sec2
-    /// </summary>
-    public static implicit operator AccelerationValue(double value) {
-        return Acceleration.MSec2.Value(value);
+    public static bool HasValue<T>(this UnitValue<T>? unitValue) where T : Unit {
+        return unitValue is not null;
     }
 }

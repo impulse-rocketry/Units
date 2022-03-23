@@ -17,48 +17,25 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class Enthalpy : ScalarUnit {
+[GenerateUnitValue]
+public sealed partial class Mass {
     /// <summary>
     ///
     /// </summary>
-    public static readonly Enthalpy KjKg = new("kJ/kg", 1);
-
+    public static readonly MassUnit Kg = new("kg", 1);
+    
     /// <summary>
     ///
     /// </summary>
-    public static readonly Enthalpy CalG = new("cal/g", 238.846e-3);
-
+    public static readonly MassUnit G = new("g", 0.001);
+    
     /// <summary>
-    ///
+    /// 
     /// </summary>
-    public static readonly Enthalpy BtuLb = new("Btu/lb", 429.923e-3);
-   
-    private Enthalpy(string name, double factor) : base(name, factor) {
-    }
-
+    public static readonly MassUnit Lb = new("lb", 0.45359237);
+    
     /// <summary>
-    /// Creates an enthalpy value with the specified value and this unit
+    /// 
     /// </summary>
-    public EnthalpyValue Value(double value) {
-        return new EnthalpyValue(value, this);
-    }
-}
-
-/// <summary>
-///
-/// </summary>
-public class EnthalpyValue : UnitValue<Enthalpy> {
-    /// <summary>
-    /// Initialises a new instance of an <see ref="EnthalpyValue"/>
-    /// </summary>
-    public EnthalpyValue(double value, Enthalpy unit) : base(value, unit)
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    public static implicit operator EnthalpyValue(double value) {
-        return Enthalpy.KjKg.Value(value);
-    }
+    public static readonly MassUnit Oz = new("oz", 0.028349523125);
 }

@@ -17,53 +17,41 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class Angle : ScalarUnit {
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly Angle Degree = new("degree", 0.01745329252);
-    
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly Angle Degrees = new("degrees", 0.01745329252);
-    
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly Angle Radian = new("radian", 1);
-    
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly Angle Radians = new("radians", 1);
+public abstract class Unit {
+    private readonly string _name;
 
-    private Angle(string name, double factor) : base (name, factor) {
-    }
-    
     /// <summary>
-    /// Creates an angle value with the specified value and this unit
+    /// Initialises a new instance of the <see cref="Unit"/> class.
     /// </summary>
-    public AngleValue Value(double value) {
-        return new AngleValue (value,this);
+    protected Unit(string name) {
+        _name = name;
     }
+
+    /// <summary>
+    /// Gets the name of the unit.
+    /// </summary>
+    public string Name => _name;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    internal abstract double ConvertFrom(double value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    internal abstract double ConvertTo(double value);
 }
 
 /// <summary>
 ///
 /// </summary>
-public class AngleValue : UnitValue<Angle> {
-    /// <summary>
-    /// Initialises a new instance of an <see ref="AngleValue"/>
-    /// </summary>
-    public AngleValue(double value, Angle unit) : base(value, unit)
-    {
-    }
-
+public static class UnitExtensions {
     /// <summary>
     ///
     /// </summary>
-    public static implicit operator AngleValue(double value) {
-        return Angle.Radian.Value(value);
+    public static double In(this double value, Unit unit) {
+        return unit.ConvertTo(value);
     }
 }
+

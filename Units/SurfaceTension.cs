@@ -17,58 +17,35 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class Energy : ScalarUnit {
+[GenerateUnitValue]
+public sealed partial class SurfaceTension {
     /// <summary>
     ///
     /// </summary>
-     public static readonly Energy Joule = new("joule", 1);
+    public static readonly SurfaceTensionUnit MNM = new("mN/m", 1);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Energy J = new("j", 1);
+    public static readonly SurfaceTensionUnit NM = new("N/m", 10e-3);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Energy Erg = new("erg", 1e-07);
+    public static readonly SurfaceTensionUnit JM2 = new("J/m2", 10e-3);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Energy Ftlb = new("ftlb", 1.3558179);
+    public static readonly SurfaceTensionUnit DynCm = new("dyn/cm", 1);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Energy Cal = new("cal", 4.1868);
-
-    private Energy(string name, double factor) : base (name, factor) {
-    } 
+    public static readonly SurfaceTensionUnit ErgCm2 = new("erg/cm2", 1);
     
-    /// <summary>
-    /// Creates an energy value with the specified value and this unit
-    /// </summary>
-    public EnergyValue Value(double value) {
-        return new EnergyValue(value, this);
-    }
-}
-
-/// <summary>
-///
-/// </summary>
-public class EnergyValue : UnitValue<Energy> {
-    /// <summary>
-    /// Initialises a new instance of an <see ref="EnergyValue"/>
-    /// </summary>
-    public EnergyValue(double value, Energy unit) : base(value, unit)
-    {
-    }
-
     /// <summary>
     ///
     /// </summary>
-    public static implicit operator EnergyValue(double value) {
-        return Energy.Joule.Value(value);
-    }
+    public static readonly SurfaceTensionUnit LbfFt = new("lbf/ft", 68.52e-6);
 }

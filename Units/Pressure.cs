@@ -17,59 +17,30 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public abstract class UnitValue<T> where T : Unit {
+[GenerateUnitValue]
+public sealed partial class Pressure {
     /// <summary>
     ///
     /// </summary>
-    public double Value { get; }
-
+    public static readonly PressureUnit Pascal = new("pascal", 1);
+    
     /// <summary>
     ///
     /// </summary>
-    public T Unit { get; }
-
-    /// <summary>
-    /// Initialises a new instance of the UnitValue.
-    /// </summary>
-    public UnitValue(double value, T unit) {
-        Value = value;
-        Unit = unit;
-    }
-
+    public static readonly PressureUnit Mpa = new("mpa", 1000000);
+    
     /// <summary>
     ///
     /// </summary>
-    public static implicit operator double(UnitValue<T>? value) {
-        if (value is null) {
-            throw new ApplicationException("Cannot convert from a null unit value.");
-        }
-
-        return value.ConvertFrom();
-    }
-
+    public static readonly PressureUnit Psi = new("psi", 6894.7573);
+    
     /// <summary>
     ///
     /// </summary>
-    protected double ConvertFrom() {      
-        return Unit.ConvertFrom(Value);
-    }
-
+    public static readonly PressureUnit Atm = new("atm", 101325);
+    
     /// <summary>
     ///
     /// </summary>
-    public double In(T unit) {
-        return unit.ConvertTo(this.ConvertFrom());
-    }
-}
-
-/// <summary>
-///
-/// </summary>
-public static class UnitValueExtensions {
-    /// <summary>
-    ///
-    /// </summary>
-    public static bool HasValue<T>(this UnitValue<T>? unitValue) where T : Unit {
-        return unitValue is not null;
-    }
+    public static readonly PressureUnit Bar = new("bar", 100000);
 }

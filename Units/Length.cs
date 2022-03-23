@@ -17,58 +17,35 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class Velocity : ScalarUnit {
+[GenerateUnitValue]
+public sealed partial class Length {
     /// <summary>
     ///
     /// </summary>
-    public static readonly Velocity MSec = new("m/sec", 1);
+    public static readonly LengthUnit Kilometers = new("km", 1000);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Velocity Kps = new("kps", 1000);
+    public static readonly LengthUnit Meters = new("m", 1);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Velocity Mph = new("mph", 0.44704);
+    public static readonly LengthUnit Centimeters = new("cm", 0.1);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Velocity Fps = new("fps", 0.3048);
+    public static readonly LengthUnit Millimeters = new("mm", 0.001);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Velocity NSec = new("n/sec", 0.0254);
-
-    private Velocity(string name, double factor) : base (name, factor) {
-    }
-
-    /// <summary>
-    /// Creates a velocity value with the specified value and this unit
-    /// </summary>
-    public VelocityValue Value(double value) {
-        return new VelocityValue(value, this);
-    }
-}
-
-/// <summary>
-///
-/// </summary>
-public class VelocityValue : UnitValue<Velocity> {
-    /// <summary>
-    /// Initialises a new instance of an <see ref="VelocityValue"/>
-    /// </summary>
-    public VelocityValue(double value, Velocity unit) : base(value, unit)
-    {
-    }
-
+    public static readonly LengthUnit Inch = new("in", 0.0254);
+    
     /// <summary>
     ///
     /// </summary>
-    public static implicit operator VelocityValue(double value) {
-        return Velocity.MSec.Value(value);
-    }
+    public static readonly LengthUnit Feet = new("ft", 0.3048);
 }

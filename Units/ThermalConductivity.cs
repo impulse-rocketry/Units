@@ -17,67 +17,40 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class Temperature : Unit {
+[GenerateUnitValue]
+public sealed partial class ThermalConductivity {
     /// <summary>
     ///
     /// </summary>
-    public static readonly Temperature Kelvin = new("K", 1, 0);
+    public static readonly ThermalConductivityUnit MWMK = new("mW/m K", 1);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Temperature Fahrenheit = new("F", 0.55555556, 255.373);
+    public static readonly ThermalConductivityUnit WMK = new("W/m K", 10e-3);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Temperature Celsius = new("C", 1, 273.15);
-
-    private readonly double _scale;
-    private readonly double _offset;
-
-    private Temperature(string name, double scale, double offset) : base(name) {
-        _scale = scale;
-        _offset = offset;
-    }
+    public static readonly ThermalConductivityUnit JCmSK = new("J/cm s K", 10e-5);
+    
+    /// <summary>
+    ///
+    /// </summary>
+    public static readonly ThermalConductivityUnit KcalMHK = new("kcal/m h K", 859.845e-6);
+    
+    /// <summary>
+    ///
+    /// </summary>
+    public static readonly ThermalConductivityUnit CalCmSK = new("cal/cm s K", 2.38846e-6);
 
     /// <summary>
     ///
     /// </summary>
-    internal override double ConvertFrom(double value) {
-        return value * _scale + _offset;
-    }
+    public static readonly ThermalConductivityUnit BtuFtHF = new("Btu/ft h F", 577.789e-6);
 
     /// <summary>
     ///
     /// </summary>
-    internal override double ConvertTo(double value) {
-        return (value - _offset) / _scale;
-    }
-
-    /// <summary>
-    /// Creates a temperature value with the specified value and this unit
-    /// </summary>
-    public TemperatureValue Value(double value) {
-        return new TemperatureValue(value, this);
-    }
-}
-
-/// <summary>
-///
-/// </summary>
-public class TemperatureValue : UnitValue<Temperature> {
-    /// <summary>
-    /// Initialises a new instance of an <see ref="TemperatureValue"/>
-    /// </summary>
-    public TemperatureValue(double value, Temperature unit) : base(value, unit)
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    public static implicit operator TemperatureValue(double value) {
-        return Temperature.Kelvin.Value(value);
-    }
+    public static readonly ThermalConductivityUnit BtuInFt2HF = new("Btu in/ft2 h F", 6.93347e-3);
 }

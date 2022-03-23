@@ -17,43 +17,20 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class MassFlux : ScalarUnit {
+[GenerateUnitValue]
+public sealed partial class HeatCapacity {
     /// <summary>
     ///
     /// </summary>
-    public static readonly MassFlux KgSecMM = new("kg/sec/m/m", 1);
-    
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly MassFlux LbSecInIn = new("lb/sec/in/in", 703.06958);
-
-    private MassFlux(string name, double factor) : base (name, factor) {
-    }
-
-    /// <summary>
-    /// Creates a mass flux value with the specified value and this unit
-    /// </summary>
-    public MassFluxValue Value(double value) {
-        return new MassFluxValue(value, this);
-    }
-}
-
-/// <summary>
-///
-/// </summary>
-public class MassFluxValue : UnitValue<MassFlux> {
-    /// <summary>
-    /// Initialises a new instance of an <see ref="MassFluxValue"/>
-    /// </summary>
-    public MassFluxValue(double value, MassFlux unit) : base(value, unit)
-    {
-    }
+    public static readonly HeatCapacityUnit KjKgK = new("kJ/kg K", 1);
 
     /// <summary>
     ///
     /// </summary>
-    public static implicit operator MassFluxValue(double value) {
-        return MassFlux.KgSecMM.Value(value);
-    }
+    public static readonly HeatCapacityUnit CalGK = new("cal/g K", 238.846e-3);
+
+    /// <summary>
+    ///
+    /// </summary>
+    public static readonly HeatCapacityUnit BtuLbF = new("Btu/lb F", 238.846e-3);
 }

@@ -17,53 +17,26 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class Mass : ScalarUnit {
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly Mass Kg = new("kg", 1);
+[GenerateUnitValue]
+public sealed partial class Density {
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Mass G = new("g", 0.001);
+    public static readonly DensityUnit KgM3 = new("kg/m3", 1);
     
-    /// <summary>
-    /// 
-    /// </summary>
-    public static readonly Mass Lb = new("lb", 0.45359237);
-    
-    /// <summary>
-    /// 
-    /// </summary>
-    public static readonly Mass Oz = new("oz", 0.028349523125);
-
-    private Mass(string name, double factor) : base (name, factor) {
-    }
-
-    /// <summary>
-    /// Creates a mass value with the specified value and this unit
-    /// </summary>
-    public MassValue Value(double value) {
-        return new MassValue(value, this);
-    }
-}
-
-/// <summary>
-///
-/// </summary>
-public class MassValue : UnitValue<Mass> {
-    /// <summary>
-    /// Initialises a new instance of an <see ref="MassValue"/>
-    /// </summary>
-    public MassValue(double value, Mass unit) : base(value, unit)
-    {
-    }
-
     /// <summary>
     ///
     /// </summary>
-    public static implicit operator MassValue(double value) {
-        return Mass.Kg.Value(value);
-    }
+    public static readonly DensityUnit GCc = new("g/cc", 1000);
+    
+    /// <summary>
+    ///
+    /// </summary>
+    public static readonly DensityUnit LbFt3 = new("lb/ft3", 16.018463);
+    
+    /// <summary>
+    ///
+    /// </summary>
+    public static readonly DensityUnit LbmFt3 = new("lbm/ft3", 16.018463);
 }

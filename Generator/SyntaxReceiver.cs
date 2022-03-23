@@ -12,46 +12,25 @@
 // FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+
 namespace ImpulseRocketry.Units;
 
-/// <summary>
-///
-/// </summary>
-public abstract class Unit {
-    private readonly string _name;
+public class SyntaxReceiver : ISyntaxReceiver
+{
+    public List<ClassDeclarationSyntax> CandidateClasses { get; } = new List<ClassDeclarationSyntax>();
 
     /// <summary>
-    /// Initialises a new instance of the <see cref="Unit"/> class.
+    /// Called for every syntax node in the compilation, we can inspect the nodes and save any information useful for generation
     /// </summary>
-    public Unit(string name) {
-        _name = name;
-    }
-
-    /// <summary>
-    /// Gets the name of the unit.
-    /// </summary>
-    public string Name => _name;
-
-    /// <summary>
-    /// 
-    /// </summary>
-    internal abstract double ConvertFrom(double value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    internal abstract double ConvertTo(double value);
-}
-
-/// <summary>
-///
-/// </summary>
-public static class UnitExtensions {
-    /// <summary>
-    ///
-    /// </summary>
-    public static double In(this double value, Unit unit) {
-        return unit.ConvertTo(value);
+    public void OnVisitSyntaxNode(SyntaxNode syntaxNode)
+    {
+        // any method with at least one attribute is a candidate for property generation
+        if (syntaxNode is ClassDeclarationSyntax classDeclarationSyntax
+            && classDeclarationSyntax.AttributeLists.Count >= 0)
+        {
+            CandidateClasses.Add(classDeclarationSyntax);
+        }
     }
 }
-

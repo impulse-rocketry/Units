@@ -17,53 +17,15 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class Force : ScalarUnit {
+[GenerateUnitValue]
+public sealed partial class Time {
     /// <summary>
     ///
     /// </summary>
-    public static readonly Force N = new("N", 1);
-
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly Force Newton = new("N", 1);
-
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly Force Lbf = new("lbf", 4.4482216);
+    public static readonly TimeUnit Sec = new("sec", 1);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Force Lb = new("lb", 4.4482216);
-
-    private Force(string name, double factor) : base (name, factor) {
-    }
-
-    /// <summary>
-    /// Creates a force value with the specified value and this unit
-    /// </summary>
-    public ForceValue Value(double value) {
-        return new ForceValue(value, this);
-    }
-}
-
-/// <summary>
-///
-/// </summary>
-public class ForceValue : UnitValue<Force> {
-    /// <summary>
-    /// Initialises a new instance of an <see ref="ForceValue"/>
-    /// </summary>
-    public ForceValue(double value, Force unit) : base(value, unit)
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    public static implicit operator ForceValue(double value) {
-        return Force.Newton.Value(value);
-    }
+    public static readonly TimeUnit S = new("s", 1);
 }

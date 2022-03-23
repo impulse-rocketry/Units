@@ -17,48 +17,40 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class MassFlow : ScalarUnit {
+[GenerateUnitValue]
+public sealed partial class Viscosity {
     /// <summary>
     ///
     /// </summary>
-    public static readonly MassFlow KgSec = new("kg/sec", 1);
+    public static readonly ViscosityUnit uNsM2 = new("μN s/m2", 1);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly MassFlow LbSec = new("lb/sec", 0.45359237);
+    public static readonly ViscosityUnit NSM2 = new("N s/m2", 10e-6);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly MassFlow LbmSec = new("lbm/sec", 0.45359237);
-
-    private MassFlow(string name, double factor) : base (name, factor) {
-    }
-
-    /// <summary>
-    /// Creates a mass flow value with the specified value and this unit
-    /// </summary>
-    public MassFlowValue Value(double value) {
-        return new MassFlowValue(value, this);
-    }
-}
-
-/// <summary>
-///
-/// </summary>
-public class MassFlowValue : UnitValue<MassFlow> {
-    /// <summary>
-    /// Initialises a new instance of an <see ref="MassFlowValue"/>
-    /// </summary>
-    public MassFlowValue(double value, MassFlow unit) : base(value, unit)
-    {
-    }
-
+    public static readonly ViscosityUnit GCmS = new("g/cm s", 10e-5);
+    
     /// <summary>
     ///
     /// </summary>
-    public static implicit operator MassFlowValue(double value) {
-        return MassFlow.KgSec.Value(value);
-    }
+    public static readonly ViscosityUnit KgMS = new("kg/m s", 10e-6);
+    
+    /// <summary>
+    ///
+    /// </summary>
+    public static readonly ViscosityUnit BFtH = new("b/ft h", 2.41909e-3);
+    
+    /// <summary>
+    ///
+    /// </summary>
+    public static readonly ViscosityUnit KgFSM2 = new("kgf s/m2", 101.972e-9);
+    
+    /// <summary>
+    ///
+    /// </summary>
+    public static readonly ViscosityUnit LbfSIn2 = new("lbf s/in2", 145.038e-12);
 }

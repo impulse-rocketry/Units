@@ -17,58 +17,55 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class Pressure : ScalarUnit {
+[GenerateUnitValue]
+public sealed partial class Temperature {
     /// <summary>
     ///
     /// </summary>
-    public static readonly Pressure Pascal = new("pascal", 1);
+    public static readonly TemperatureUnit Kelvin = new("K", 1, 0);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Pressure Mpa = new("mpa", 1000000);
+    public static readonly TemperatureUnit Fahrenheit = new("F", 0.55555556, 255.373);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Pressure Psi = new("psi", 6894.7573);
-    
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly Pressure Atm = new("atm", 101325);
-    
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly Pressure Bar = new("bar", 100000);
-
-    private Pressure(string name, double factor) : base (name, factor) {
-    }
-
-    /// <summary>
-    /// Creates a pressure value with the specified value and this unit
-    /// </summary>
-    public PressureValue Value(double value) {
-        return new PressureValue(value, this);
-    }
+    public static readonly TemperatureUnit Celsius = new("C", 1, 273.15);
 }
 
 /// <summary>
 ///
 /// </summary>
-public class PressureValue : UnitValue<Pressure> {
-    /// <summary>
-    /// Initialises a new instance of an <see ref="PressureValue"/>
-    /// </summary>
-    public PressureValue(double value, Pressure unit) : base(value, unit)
-    {
+public sealed class TemperatureUnit : Unit {
+
+    private readonly double _scale;
+    private readonly double _offset;
+
+    internal TemperatureUnit(string name, double scale, double offset) : base(name) {
+        _scale = scale;
+        _offset = offset;
     }
 
     /// <summary>
     ///
     /// </summary>
-    public static implicit operator PressureValue(double value) {
-        return Pressure.Pascal.Value(value);
+    internal override double ConvertFrom(double value) {
+        return value * _scale + _offset;
+    }
+
+    /// <summary>
+    ///
+    /// </summary>
+    internal override double ConvertTo(double value) {
+        return (value - _offset) / _scale;
+    }
+
+    /// <summary>
+    /// Creates a temperature value with the specified value and this unit
+    /// </summary>
+    public Temperature Value(double value) {
+        return new Temperature(value, this);
     }
 }

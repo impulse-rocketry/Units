@@ -17,54 +17,25 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class Density : ScalarUnit {
+[GenerateUnitValue]
+public sealed partial class Angle {
+    /// <summary>
+    ///
+    /// </summary>
+    public static readonly AngleUnit Degree = new("degree", 0.01745329252);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Density KgM3 = new("kg/m3", 1);
+    public static readonly AngleUnit Degrees = new("degrees", 0.01745329252);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Density GCc = new("g/cc", 1000);
+    public static readonly AngleUnit Radian = new("radian", 1);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Density LbFt3 = new("lb/ft3", 16.018463);
-    
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly Density LbmFt3 = new("lbm/ft3", 16.018463);
-
-    private Density(string name, double factor) : base (name, factor) {
-    }
-
-    /// <summary>
-    /// Creates a density value with the specified value and this unit
-    /// </summary>
-    public DensityValue Value(double value) {
-        return new DensityValue(value, this);
-    }
-}
-
-/// <summary>
-///
-/// </summary>
-public class DensityValue : UnitValue<Density> {
-    /// <summary>
-    /// Initialises a new instance of an <see ref="DensityValue"/>
-    /// </summary>
-    public DensityValue(double value, Density unit) : base(value, unit)
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    public static implicit operator DensityValue(double value) {
-        return Density.KgM3.Value(value);
-    }
+    public static readonly AngleUnit Radians = new("radians", 1);
 }

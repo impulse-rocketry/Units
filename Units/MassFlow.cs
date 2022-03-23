@@ -17,63 +17,20 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class Length : ScalarUnit {
+[GenerateUnitValue]
+public sealed partial class MassFlow {
     /// <summary>
     ///
     /// </summary>
-    public static readonly Length Km = new("km", 1000);
+    public static readonly MassFlowUnit KgSec = new("kg/sec", 1);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Length M = new("m", 1);
+    public static readonly MassFlowUnit LbSec = new("lb/sec", 0.45359237);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Length Cm = new("cm", 0.1);
-    
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly Length Mm = new("mm", 0.001);
-    
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly Length In = new("in", 0.0254);
-    
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly Length Ft = new("ft", 0.3048);
-
-    private Length(string name, double factor) : base (name, factor) {
-    }
-
-    /// <summary>
-    /// Creates a length value with the specified value and this unit
-    /// </summary>
-    public LengthValue Value(double value) {
-        return new LengthValue(value, this);
-    }
-}
-
-/// <summary>
-///
-/// </summary>
-public class LengthValue : UnitValue<Length> {
-    /// <summary>
-    /// Initialises a new instance of an <see ref="LengthValue"/>
-    /// </summary>
-    public LengthValue(double value, Length unit) : base(value, unit)
-    {
-    }
-
-    /// <summary>
-    ///
-    /// </summary>
-    public static implicit operator LengthValue(double value) {
-        return Length.M.Value(value);
-    }
+    public static readonly MassFlowUnit LbmSec = new("lbm/sec", 0.45359237);
 }

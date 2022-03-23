@@ -17,43 +17,30 @@ namespace ImpulseRocketry.Units;
 /// <summary>
 ///
 /// </summary>
-public sealed class Time : ScalarUnit {
+[GenerateUnitValue]
+public sealed partial class Volume {
     /// <summary>
     ///
     /// </summary>
-    public static readonly Time Sec = new("sec", 1);
+    public static readonly VolumeUnit MSec = new("m3", 1);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly Time S = new("s", 1);
-
-    private Time(string name, double factor) : base (name, factor) {
-    }
-
-    /// <summary>
-    /// Creates a time value with the specified value and this unit
-    /// </summary>
-    public TimeValue Value(double value) {
-        return new TimeValue(value, this);
-    }
-}
-
-/// <summary>
-///
-/// </summary>
-public class TimeValue : UnitValue<Time> {
-    /// <summary>
-    /// Initialises a new instance of an <see ref="TimeValue"/>
-    /// </summary>
-    public TimeValue(double value, Time unit) : base(value, unit)
-    {
-    }
-
+    public static readonly VolumeUnit Kps = new("cc", 0.000001);
+    
     /// <summary>
     ///
     /// </summary>
-    public static implicit operator TimeValue(double value) {
-        return Time.S.Value(value);
-    }
+    public static readonly VolumeUnit Mph = new("in3", 1.6387064e-05);
+    
+    /// <summary>
+    ///
+    /// </summary>
+    public static readonly VolumeUnit Fps = new("liter", 0.001);
+    
+    /// <summary>
+    ///
+    /// </summary>
+    public static readonly VolumeUnit NSec = new("cup", 0.000236588);
 }
