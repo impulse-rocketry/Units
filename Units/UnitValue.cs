@@ -14,26 +14,22 @@
 
 namespace ImpulseRocketry.Units;
 
-public abstract class UnitValue {
-    
-}
-
 /// <summary>
-///
+/// A numeric value and its associated unit.
 /// </summary>
 public abstract class UnitValue<TUnit> where TUnit : Unit {
     /// <summary>
-    ///
+    /// Gets the value 
     /// </summary>
     public double Value { get; }
 
     /// <summary>
-    ///
+    /// Gets the unit
     /// </summary>
     public TUnit Unit { get; }
 
     /// <summary>
-    /// Initialises a new instance of the UnitValue.
+    /// Initialises a new instance of the <see ref="UnitValue"/>.
     /// </summary>
     public UnitValue(double value, TUnit unit) {
         Value = value;
@@ -41,7 +37,7 @@ public abstract class UnitValue<TUnit> where TUnit : Unit {
     }
 
     /// <summary>
-    ///
+    /// Implicitly convert the unit value to a double value.
     /// </summary>
     public static implicit operator double(UnitValue<TUnit>? value) {
         if (value is null) {
@@ -52,34 +48,34 @@ public abstract class UnitValue<TUnit> where TUnit : Unit {
     }
 
     /// <summary>
-    ///
+    /// Converts the value from the unit to a double value.
     /// </summary>
     protected double ConvertFrom() {      
         return Unit.ConvertFrom(Value);
     }
 
     /// <summary>
-    ///
+    /// Gets the conversions for the unit value.
     /// </summary>
     public abstract Conversion<TUnit> In {
         get;
     }
 
     /// <summary>
-    ///
+    /// Extensions for the <see ref="UnitValue"/> class.
     /// </summary>
     public abstract class Conversion<T> where T : TUnit {
         private readonly UnitValue<T> _value;
 
         /// <summary>
-        ///
+        /// Initialises a new instance of the <see ref="Conversion"/> class with the specified value.
         /// </summary>
         protected Conversion(UnitValue<T> value) {
             _value = value;
         }
 
         /// <summary>
-        ///
+        /// Converts the unit value to a double in the specified unit.
         /// </summary>
         public double this[T unit] { 
             get {
@@ -90,11 +86,11 @@ public abstract class UnitValue<TUnit> where TUnit : Unit {
 }
 
 /// <summary>
-///
+/// Extensions for the <see ref="UnitValue"/> class.
 /// </summary>
 public static class UnitValueExtensions {
     /// <summary>
-    ///
+    /// Determines if the nullable unit value has a value
     /// </summary>
     public static bool HasValue<T>(this UnitValue<T>? unitValue) where T : Unit {
         return unitValue is not null;
