@@ -19,18 +19,33 @@ namespace ImpulseRocketry.Units;
 /// </summary>
 public abstract class Unit {
     private readonly string _name;
+    private readonly string[] _abbreviations;
 
     /// <summary>
     /// Initialises a new instance of the <see cref="Unit"/> class.
     /// </summary>
     protected Unit(string name) {
         _name = name;
+        _abbreviations = Array.Empty<string>();
+    }
+
+    /// <summary>
+    /// Initialises a new instance of the <see cref="Unit"/> class.
+    /// </summary>
+    protected Unit(string name, params string[] abbreviations) {
+        _name = name;
+        _abbreviations = abbreviations;
     }
 
     /// <summary>
     /// Gets the name of the unit.
     /// </summary>
     public string Name => _name;
+
+    /// <summary>
+    /// Gets the abbreviated names of the unit.
+    /// </summary>
+    public string[] Abbreviations => _abbreviations;
 
     /// <summary>
     /// 

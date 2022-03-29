@@ -124,6 +124,9 @@ public partial class {candidateClass.Identifier.Text} : UnitValue<{candidateClas
 public class {candidateClass.Identifier.Text}Unit : ScalarUnit {{
     internal {candidateClass.Identifier.Text}Unit(string name, double factor) : base (name, factor) {{
     }}
+
+    internal {candidateClass.Identifier.Text}Unit(string name, double factor, params string[] abbreviations) : base (name, factor, abbreviations) {{
+    }}
     
     /// <summary>
     /// Creates a {candidateClass.Identifier.Text.ToLower()} value with the specified value and this unit

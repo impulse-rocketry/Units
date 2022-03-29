@@ -19,13 +19,19 @@ namespace ImpulseRocketry.Units;
 /// </summary>
 [GenerateUnitValue]
 public sealed partial class Time {
+
     /// <summary>
     ///
     /// </summary>
-    public static readonly TimeUnit Sec = new("sec", 1);
-    
+    public static readonly TimeUnit MillisecondsSeconds = new("Milliseconds", 0.0001, "ms", "msec");
+
     /// <summary>
     ///
     /// </summary>
-    public static readonly TimeUnit S = new("s", 1);
+    public static readonly TimeUnit Seconds = new("Seconds", 1, "s", "sec");
+
+    /// <summary>
+    ///
+    /// </summary>
+    public static readonly TimeUnit Minutes = new("Minutes", 60, "m", "min");
 }

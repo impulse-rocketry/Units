@@ -26,6 +26,13 @@ public abstract class ScalarUnit : Unit {
     protected ScalarUnit(string name, double factor) : base(name) {
         _factor = factor;
     }
+    
+    /// <summary>
+    ///
+    /// </summary>
+    protected ScalarUnit(string name, double factor, params string[] abbreviations) : base(name, abbreviations) {
+        _factor = factor;
+    }
 
     /// <summary>
     ///

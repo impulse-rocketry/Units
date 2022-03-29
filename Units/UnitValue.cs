@@ -14,6 +14,10 @@
 
 namespace ImpulseRocketry.Units;
 
+public abstract class UnitValue {
+    
+}
+
 /// <summary>
 ///
 /// </summary>

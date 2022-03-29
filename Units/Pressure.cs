@@ -23,7 +23,12 @@ public sealed partial class Pressure {
     ///
     /// </summary>
     public static readonly PressureUnit Pascal = new("pascal", 1);
-    
+
+    /// <summary>
+    ///
+    /// </summary>
+    public static readonly PressureUnit Kpa = new("kpa", 1000);
+
     /// <summary>
     ///
     /// </summary>

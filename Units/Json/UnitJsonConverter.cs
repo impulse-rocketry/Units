@@ -10,7 +10,7 @@ namespace ImpulseRocketry.Units.Json;
 public class UnitJsonConverter<T> : JsonConverter<T> where T : Unit {
     private static readonly Dictionary<string, T> NameToValueMap = typeof(T)
             .GetFields(BindingFlags.Public | BindingFlags.Static)
-            .Where(f => f.FieldType == typeof(T))
+            .Where(f => f.FieldType == typeof(Unit))
             .Select(f => (T)f!.GetValue(null)!).ToDictionary(x => x.Name);
 
     /// <summary>
