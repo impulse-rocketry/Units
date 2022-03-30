@@ -29,7 +29,7 @@ public class TemperatureTests
     }
 
     [Fact]
-    public async void ImplicityCastToKelvin() {
+    public void ImplicityCastToKelvin() {
         double t = Temperature.Celsius.Value(42);
         t.Should().Be(315.15);
     }
