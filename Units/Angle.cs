@@ -22,20 +22,10 @@ public sealed partial class Angle {
     /// <summary>
     ///
     /// </summary>
-    public static readonly AngleUnit Degree = new("degree", 0.01745329252);
-    
+    public static readonly AngleUnit Deg = new("deg", 0.01745329252 ,"degree", "degrees");
+        
     /// <summary>
     ///
     /// </summary>
-    public static readonly AngleUnit Degrees = new("degrees", 0.01745329252);
-    
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly AngleUnit Radian = new("radian", 1);
-    
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly AngleUnit Radians = new("radians", 1);
+    public static readonly AngleUnit Rad = new("rad", 1, "radian", "radians");
 }

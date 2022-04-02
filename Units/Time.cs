@@ -23,15 +23,15 @@ public sealed partial class Time {
     /// <summary>
     ///
     /// </summary>
-    public static readonly TimeUnit MillisecondsSeconds = new("Milliseconds", 0.0001, "ms", "msec");
+    public static readonly TimeUnit Ms = new("ms", 0.0001, "msec", "millisecond", "milliseconds");
 
     /// <summary>
     ///
     /// </summary>
-    public static readonly TimeUnit Seconds = new("Seconds", 1, "s", "sec");
+    public static readonly TimeUnit S = new("s", 1, "sec", "second", "seconds");
 
     /// <summary>
     ///
     /// </summary>
-    public static readonly TimeUnit Minutes = new("Minutes", 60, "m", "min");
+    public static readonly TimeUnit M = new("m", 60, "min", "mins", "minute", "minutes");
 }

@@ -22,20 +22,20 @@ public sealed partial class Mass {
     /// <summary>
     ///
     /// </summary>
-    public static readonly MassUnit Kg = new("kg", 1);
-    
+    public static readonly MassUnit Kg = new("kg", 1, "kilogram", "kilograms");
+
     /// <summary>
     ///
     /// </summary>
-    public static readonly MassUnit G = new("g", 0.001);
+    public static readonly MassUnit G = new("g", 0.001, "gram", "grams");
     
     /// <summary>
     /// 
     /// </summary>
-    public static readonly MassUnit Lb = new("lb", 0.45359237);
-    
+    public static readonly MassUnit Lb = new("lb", 0.45359237, "pound", "pounds");
+
     /// <summary>
     /// 
     /// </summary>
-    public static readonly MassUnit Oz = new("oz", 0.028349523125);
+    public static readonly MassUnit Oz = new("oz", 0.028349523125, "ounce", "ounces");
 }

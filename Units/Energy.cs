@@ -22,12 +22,7 @@ public sealed partial class Energy {
     /// <summary>
     ///
     /// </summary>
-     public static readonly EnergyUnit Joule = new("joule", 1);
-    
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly EnergyUnit J = new("j", 1);
+    public static readonly EnergyUnit J = new("j", 1, "joule", "joules");
     
     /// <summary>
     ///

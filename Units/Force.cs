@@ -22,12 +22,7 @@ public sealed partial class Force {
     /// <summary>
     ///
     /// </summary>
-    public static readonly ForceUnit N = new("N", 1);
-
-    /// <summary>
-    ///
-    /// </summary>
-    public static readonly ForceUnit Newton = new("N", 1);
+    public static readonly ForceUnit N = new("N", 1, "newton", "newtons");
 
     /// <summary>
     ///

@@ -22,30 +22,30 @@ public sealed partial class Length {
     /// <summary>
     ///
     /// </summary>
-    public static readonly LengthUnit Kilometers = new("km", 1000);
+    public static readonly LengthUnit Km = new("km", 1000, "kilometer", "kilometers");
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly LengthUnit Meters = new("m", 1);
+    public static readonly LengthUnit M = new("m", 1, "meter", "meters");
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly LengthUnit Centimeters = new("cm", 0.1);
+    public static readonly LengthUnit Cm = new("cm", 0.1, "centimeter", "centimeters");
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly LengthUnit Millimeters = new("mm", 0.001);
+    public static readonly LengthUnit Mm = new("mm", 0.001, "millimeter", "millimeters");
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly LengthUnit Inch = new("in", 0.0254);
+    public static readonly LengthUnit In = new("in", 0.0254, "inch", "inches");
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly LengthUnit Feet = new("ft", 0.3048);
+    public static readonly LengthUnit Ft = new("ft", 0.3048, "foot", "feet");
 }

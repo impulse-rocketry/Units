@@ -57,7 +57,7 @@ public abstract class UnitValue<TUnit> where TUnit : Unit {
     /// <summary>
     /// Gets the conversions for the unit value.
     /// </summary>
-    public abstract Conversion<TUnit> In {
+    public abstract Conversion<TUnit> To {
         get;
     }
 

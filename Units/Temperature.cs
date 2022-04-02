@@ -22,17 +22,17 @@ public sealed partial class Temperature {
     /// <summary>
     ///
     /// </summary>
-    public static readonly TemperatureUnit Kelvin = new("K", 1, 0);
+    public static readonly TemperatureUnit K = new("K", 1, 0, "kelvin");
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly TemperatureUnit Fahrenheit = new("F", 0.55555556, 255.373);
-    
+    public static readonly TemperatureUnit F = new("F", 0.55555556, 255.373, "fahrenheit");
+
     /// <summary>
     ///
     /// </summary>
-    public static readonly TemperatureUnit Celsius = new("C", 1, 273.15);
+    public static readonly TemperatureUnit C = new("C", 1, 273.15, "celsius");
 }
 
 /// <summary>
@@ -43,7 +43,7 @@ public sealed class TemperatureUnit : Unit {
     private readonly double _scale;
     private readonly double _offset;
 
-    internal TemperatureUnit(string name, double scale, double offset) : base(name) {
+    internal TemperatureUnit(string name, double scale, double offset, params string[] abbreviations) : base(name, abbreviations) {
         _scale = scale;
         _offset = offset;
     }

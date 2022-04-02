@@ -85,7 +85,7 @@ public partial class {candidateClass.Identifier.Text} : UnitValue<{candidateClas
     /// <summary>
     ///
     /// </summary>
-    public override Conversion In {{
+    public override Conversion To {{
         get {{
             return new Conversion(this);
         }}
