@@ -22,25 +22,25 @@ public sealed partial class Volume {
     /// <summary>
     ///
     /// </summary>
-    public static readonly VolumeUnit MSec = new("m3", 1);
+    public static readonly VolumeUnit M3 = new("m3", 1);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly VolumeUnit Kps = new("cc", 0.000001);
+    public static readonly VolumeUnit Cc = new("cc", 0.000001);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly VolumeUnit Mph = new("in3", 1.6387064e-05);
+    public static readonly VolumeUnit In3 = new("in3", 1.6387064e-05);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly VolumeUnit Fps = new("liter", 0.001);
+    public static readonly VolumeUnit Liter = new("liter", 0.001);
     
     /// <summary>
     ///
     /// </summary>
-    public static readonly VolumeUnit NSec = new("cup", 0.000236588);
+    public static readonly VolumeUnit Cup = new("cup", 0.000236588);
 }
