@@ -32,7 +32,7 @@ public sealed partial class Length {
     /// <summary>
     ///
     /// </summary>
-    public static readonly LengthUnit Cm = new("cm", 0.1, "centimeter", "centimeters");
+    public static readonly LengthUnit Cm = new("cm", 0.01, "centimeter", "centimeters");
     
     /// <summary>
     ///
