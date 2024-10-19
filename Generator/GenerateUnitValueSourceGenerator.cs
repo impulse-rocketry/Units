@@ -63,7 +63,7 @@ namespace ImpulseRocketry.Units;
             var model = compilation.GetSemanticModel(candidateClass.SyntaxTree);
             if (model.GetDeclaredSymbol(candidateClass) is ITypeSymbol typeSymbol &&
                 typeSymbol.GetAttributes().Any(x =>
-                    x.AttributeClass.Equals(attributeSymbol, SymbolEqualityComparer.Default))) {
+                    x.AttributeClass?.Equals(attributeSymbol, SymbolEqualityComparer.Default) == true)) {
                 stringBuilder.Append(@$"
 /// <summary>
 ///
